@@ -1,0 +1,45 @@
+/**
+ * SCSS Color Function
+ *
+ * Returns the color with the given weight. Make the color lighter or darker
+ * depending on the weight. Function accepts 2 parameters `color-name` and `weight`,
+ * whereby the default weight is 500.
+ *
+ * This is designed to avoid variables like $color-primary-light, $color-primary-lighter
+ * and $color-primary-lightest. Instead you can write color(primary, 400),
+ * color(primary, 300) and color(primary, 100). Inspiration from the attribute font-weight.
+ *
+ * Feel free to edit the logic.
+ *
+ * @author Martijn Hasperhoven <martijn.hasperhoven@gmail.com>
+ * @link   www.martijnhasperhoven.com
+ */
+
+@import "config/variables";
+@import "color-weight/color-weight";
+
+html,
+body {
+  // this is the same as color(text, 500)
+  color: color(text);
+}
+
+h1 {
+  color: color(text, 700);
+}
+
+aside {
+  color: color(text, 300);
+}
+
+strong {
+  color: color(text, 900);
+}
+
+button {
+  color: color(primary, 50);
+
+  // this is the same as color(primary, 500)
+  background: color(primary);
+  border: 1px solid color(primary, 700);
+}

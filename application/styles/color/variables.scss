@@ -1,0 +1,26 @@
+/**
+ * SCSS Color variables
+ *
+ * Map of colors.
+ *
+ * This is designed to replace variables like $color-primary, $color-secondary,
+ * and $color-text. Instead you can write use the color() function like so:
+ * color(primary), color(secondary) and color(text).
+ *
+ * @author Martijn Hasperhoven <martijn.hasperhoven@gmail.com>
+ * @link   www.martijnhasperhoven.com
+ */
+
+// Example colors
+$colors: (
+  primary:     #2c88b8,
+  secondary:   #2d2d2d,
+  bg:          #f5f5f5,
+  bg-footer:   #fafafa,
+  error:       #b82c2c,
+  success:     #54b86e,
+  border:      #e5e5e5,
+  text:        #404040,
+  text-footer: #acacac,
+  google:      #dd4b39
+);

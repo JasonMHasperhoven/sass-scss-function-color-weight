@@ -1,0 +1,58 @@
+/**
+ * SCSS Color Function
+ *
+ * Returns the color with the given weight. Make the color lighter or darker
+ * depending on the weight. Function accepts 2 parameters `color-name` and `weight`,
+ * whereby the default weight is 500.
+ *
+ * This is designed to avoid variables like $color-primary-light, $color-primary-lighter
+ * and $color-primary-lightest. Instead you can write color(primary, 400),
+ * color(primary, 300) and color(primary, 100). Inspiration from the attribute font-weight.
+ *
+ * Feel free to edit the logic.
+ *
+ * @author Martijn Hasperhoven <martijn.hasperhoven@gmail.com>
+ * @link   www.martijnhasperhoven.com
+ */
+
+// Get $colors variables map
+@import "variables";
+
+// Weight config for color()
+$weights: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900;
+$default-weight: 500;
+
+@function color($color-name, $weight: $default-weight) {
+  $base-color: map-get($colors, $color-name);
+  $amount: nil;
+  $color: nil;
+  @if not map-has-key($colors, $color-name) {
+    @warn "Unknown color-name `#{$color}`.";
+    @return false;
+  }
+
+  @if not index($weights, $weight) {
+    @warn "Unknown color-weight `#{$weight}`.";
+    @return false;
+  }
+
+  @if $weight == 500 {
+    @return $base-color;
+  }
+
+  @if $weight == 50 or $weight == 900 {
+    $amount: 50;
+  } @else if $weight < 500 {
+    $amount: -($weight - 500) / 5.8;
+  } @else if $weight > 500 {
+    $amount: ($weight - 500) / 10;
+  }
+
+  @if $weight < 500 {
+    $color: mix(white, $base-color, $amount);
+  } @else if $weight > 500 {
+    $color: mix(black, $base-color, $amount);
+  }
+
+  @return $color;
+}
